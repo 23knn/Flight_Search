@@ -8,7 +8,7 @@ import com.example.flightsearch.model.FavoritedRoute
 import kotlinx.coroutines.flow.Flow
 
 @Dao // @Dao is what makes it a Dao, we don't need to extend/implement anything. for retrofit remember we extended retrofit
-interface FavoritedRouteDAO {
+interface FavoriteDAO {
     @Insert
     suspend fun insertRoute(route: FavoritedRoute)
 

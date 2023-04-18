@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class FavoritedRoute(
+data class Favorite(
     @PrimaryKey
     val id: Int,
     val departure_code: String,

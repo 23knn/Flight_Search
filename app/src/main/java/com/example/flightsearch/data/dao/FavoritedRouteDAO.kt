@@ -10,10 +10,10 @@ import kotlinx.coroutines.flow.Flow
 @Dao // @Dao is what makes it a Dao, we don't need to extend/implement anything. for retrofit remember we extended retrofit
 interface FavoritedRouteDAO {
     @Insert
-    suspend fun insertRoute()
+    suspend fun insertRoute(route: FavoritedRoute)
 
     @Delete
-    suspend fun deleteRoute()
+    suspend fun deleteRoute(id: Int)
 
     @Query("SELECT * FROM favoritedRoute")
     fun getAllFavorites(): Flow<List<FavoritedRoute>>

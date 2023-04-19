@@ -22,8 +22,14 @@ class GetFlightsViewModel(private val airportRepository: AirportRepository, priv
         viewModelScope.launch {
             searchState = searchState.copy(allAirports = airportRepository.getAllAirports() )
         }
-
     }
+
+    fun updateSearchSuggestions(searchString: String) {
+        viewModelScope.launch {
+            searchState = searchState.copy(autoCompleteSuggestions = airportRepository.findByNameOrIATA("%$searchString%"))
+        }
+    }
+
 
 
 }

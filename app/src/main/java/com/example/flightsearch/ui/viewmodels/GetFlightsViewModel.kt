@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.flightsearch.data.repository.AirportRepository
 import com.example.flightsearch.data.repository.FavoriteRepository
+import com.example.flightsearch.model.Airport
 import kotlinx.coroutines.launch
 
 
@@ -37,8 +38,11 @@ class GetFlightsViewModel(private val airportRepository: AirportRepository, priv
         }
     }
 
-    fun showPossibleFlights() {
-
+    fun showPossibleFlights(airport: Airport) {
+        searchState = searchState.copy(
+            originAirport = airport,
+            showType = showTypes.FLIGHTS
+        )
     }
 
 

@@ -29,7 +29,7 @@ fun HomeScreen(
             onSearchEdit = { newValue: String ->  searchBarString = newValue; onSearchStringEdit(newValue)},
             modifier = modifier
         )
-        ResultsScreen(airports = airports, originAirport = , showType = showType, onSuggestionClicked = )
+        ResultsScreen(airports = airports, originAirport = originAirport , showType = showType, onSuggestionClicked = onSuggestionClicked)
     }
 }
 

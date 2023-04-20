@@ -23,7 +23,7 @@ fun SearchSuggestions(
 
 @Composable
 fun Suggestion(airport: Airport, onAirportClicked: (Airport) -> Unit, modifier: Modifier = Modifier) {
-    Button(onClick = { onAirportClicked }) {
+    Button(onClick = { onAirportClicked(airport) }) {
         Text(text = airport.iata_code, fontWeight = FontWeight.Bold, modifier = Modifier.padding(end = 5.dp))
         Text(text = airport.name)
     }

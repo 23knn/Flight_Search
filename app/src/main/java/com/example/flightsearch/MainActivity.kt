@@ -9,6 +9,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.flightsearch.model.Airport
 import com.example.flightsearch.ui.screens.homeScreen.HomeScreen
 import com.example.flightsearch.ui.theme.FlightSearchTheme
 import com.example.flightsearch.ui.viewmodels.GetFlightsViewModel
@@ -30,6 +31,8 @@ class MainActivity : ComponentActivity() {
                         airports = viewModel.searchState.autoCompleteSuggestions,
                         showType = viewModel.searchState.showType,
                         onSearchStringEdit = { searchString: String -> viewModel.updateSearchSuggestions(searchString)},
+                        originAirport = viewModel.searchState.originAirport,
+                        onSuggestionClicked = {airport: Airport -> viewModel.showPossibleFlights(airport)},
                         modifier = Modifier.fillMaxWidth()
                     )
                 }

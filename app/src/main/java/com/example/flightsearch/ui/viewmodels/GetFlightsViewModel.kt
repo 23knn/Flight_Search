@@ -37,6 +37,10 @@ class GetFlightsViewModel(private val airportRepository: AirportRepository, priv
         }
     }
 
+    fun showPossibleFlights() {
+
+    }
+
 
 
 }

@@ -6,12 +6,10 @@ import com.example.flightsearch.ui.viewmodels.showTypes
 
 
 @Composable
-fun ResultsScreen(airports: List<Airport>, showType: showTypes) {
-
+fun ResultsScreen(airports: List<Airport>, originAirport: Airport, showType: showTypes, onSuggestionClicked: (Airport) -> Unit) {
     when(showType){
         showTypes.FAVORITES -> FavoritesList()
-        showTypes.FLIGHTS -> PossibleFlights()
-        else -> SearchSuggestions(airports = airports)
+        showTypes.FLIGHTS -> PossibleFlights( airports = airports, origin = originAirport )
+        else -> SearchSuggestions(airports = airports, onSuggestionClicked = onSuggestionClicked)
     }
-
 }

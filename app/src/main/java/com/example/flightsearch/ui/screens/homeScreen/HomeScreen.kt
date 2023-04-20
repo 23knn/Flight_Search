@@ -17,6 +17,8 @@ fun HomeScreen(
     airports: List<Airport>,
     showType: showTypes,
     onSearchStringEdit: (String) -> Unit,
+    originAirport: Airport,
+    onSuggestionClicked: (Airport) -> Unit,
     modifier: Modifier = Modifier
 ) {
     var searchBarString:String by remember { mutableStateOf("") }
@@ -27,8 +29,9 @@ fun HomeScreen(
             onSearchEdit = { newValue: String ->  searchBarString = newValue; onSearchStringEdit(newValue)},
             modifier = modifier
         )
-        ResultsScreen(airports = airports, showType = showType)
+        ResultsScreen(airports = airports, originAirport = , showType = showType, onSuggestionClicked = )
     }
 }
+
 
 

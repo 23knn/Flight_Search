@@ -12,5 +12,6 @@ data class SearchState(
     val autoCompleteSuggestions: List<Airport> = emptyList(),
     val searchResults: List<Airport> = emptyList(),
     val allAirports: List<Airport> = emptyList(),
-    val showType: showTypes = showTypes.FAVORITES
+    val showType: showTypes = showTypes.FAVORITES,
+    val originAirport: Airport? = null,
 )

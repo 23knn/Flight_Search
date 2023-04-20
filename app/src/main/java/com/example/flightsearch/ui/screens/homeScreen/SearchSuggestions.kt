@@ -11,15 +11,19 @@ import androidx.compose.ui.unit.dp
 import com.example.flightsearch.model.Airport
 
 @Composable
-fun SearchSuggestions(airports: List<Airport>, modifier: Modifier = Modifier) {
+fun SearchSuggestions(
+    airports: List<Airport>,
+    onSuggestionClicked: (Airport) -> Unit,
+    modifier: Modifier = Modifier
+) {
     airports.forEach { it ->
-        Suggestion(airport = it, modifier = modifier)
+        Suggestion(airport = it, { airport: Airport -> onSuggestionClicked(airport) }, modifier = modifier)
     }
 }
 
 @Composable
-fun Suggestion(airport: Airport, modifier: Modifier = Modifier) {
-    Button(onClick = { }) {
+fun Suggestion(airport: Airport, onAirportClicked: (Airport) -> Unit, modifier: Modifier = Modifier) {
+    Button(onClick = { onAirportClicked }) {
         Text(text = airport.iata_code, fontWeight = FontWeight.Bold, modifier = Modifier.padding(end = 5.dp))
         Text(text = airport.name)
     }

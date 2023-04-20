@@ -7,11 +7,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.example.flightsearch.R
+import com.example.flightsearch.ui.viewmodels.showTypes
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchBar(
     searchBarString: String,
+    showType: showTypes,
     onSearchEdit: (String)-> Unit,
     modifier: Modifier = Modifier
 ) {

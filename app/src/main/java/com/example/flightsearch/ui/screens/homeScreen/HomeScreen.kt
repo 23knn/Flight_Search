@@ -8,19 +8,26 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.example.flightsearch.model.Airport
+import com.example.flightsearch.ui.viewmodels.showTypes
 import kotlinx.coroutines.flow.Flow
 
 
 @Composable
-fun HomeScreen(airports: List<Airport>, onSearchStringEdit: (String) -> Unit, modifier: Modifier = Modifier) {
+fun HomeScreen(
+    airports: List<Airport>,
+    showType: showTypes,
+    onSearchStringEdit: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
     var searchBarString:String by remember { mutableStateOf("") }
     Column(modifier = modifier) {
         SearchBar(
             searchBarString = searchBarString,
+            showType = showType,
             onSearchEdit = { newValue: String ->  searchBarString = newValue; onSearchStringEdit(newValue)},
             modifier = modifier
         )
-        SearchSuggestions(airports = airports, modifier = modifier)
+        ResultsScreen(airports = airports, showType = showType)
     }
 }
 

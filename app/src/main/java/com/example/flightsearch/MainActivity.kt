@@ -13,6 +13,7 @@ import com.example.flightsearch.ui.screens.homeScreen.HomeScreen
 import com.example.flightsearch.ui.theme.FlightSearchTheme
 import com.example.flightsearch.ui.viewmodels.GetFlightsViewModel
 import com.example.flightsearch.ui.viewmodels.ViewModelProvider
+import com.example.flightsearch.ui.viewmodels.showTypes
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +28,7 @@ class MainActivity : ComponentActivity() {
                     var viewModel: GetFlightsViewModel = viewModel(factory = ViewModelProvider.Factory)
                     HomeScreen(
                         airports = viewModel.searchState.autoCompleteSuggestions,
+                        showType = viewModel.searchState.showType,
                         onSearchStringEdit = { searchString: String -> viewModel.updateSearchSuggestions(searchString)},
                         modifier = Modifier.fillMaxWidth()
                     )

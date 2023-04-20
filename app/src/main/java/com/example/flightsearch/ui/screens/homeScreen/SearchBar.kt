@@ -13,13 +13,13 @@ import com.example.flightsearch.ui.viewmodels.showTypes
 @Composable
 fun SearchBar(
     searchBarString: String,
-    showType: showTypes,
     onSearchEdit: (String)-> Unit,
     modifier: Modifier = Modifier
 ) {
     TextField(
         value = searchBarString,
         onValueChange = { newValue:String -> onSearchEdit(newValue) },
-        placeholder = {Text(stringResource(id = R.string.search_text_field))}
+        placeholder = {Text(stringResource(id = R.string.search_text_field))},
+        modifier = modifier
     )
 }

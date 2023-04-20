@@ -28,6 +28,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     var viewModel: GetFlightsViewModel = viewModel(factory = ViewModelProvider.Factory)
                     HomeScreen(
+                        defaultAllAirports = viewModel.defaultAllAirports,
                         airports = viewModel.searchState.autoCompleteSuggestions,
                         showType = viewModel.searchState.showType,
                         onSearchStringEdit = { searchString: String -> viewModel.updateSearchSuggestions(searchString)},

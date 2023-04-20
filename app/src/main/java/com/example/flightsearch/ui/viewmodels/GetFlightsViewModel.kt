@@ -14,6 +14,7 @@ import kotlinx.coroutines.launch
 
 class GetFlightsViewModel(private val airportRepository: AirportRepository, private val favoriteRepository: FavoriteRepository): ViewModel() {
     var searchState by mutableStateOf(SearchState())
+    var defaultAllAirports: List<Airport> = emptyList()
 
     init {
         getAllAirports()
@@ -21,7 +22,9 @@ class GetFlightsViewModel(private val airportRepository: AirportRepository, priv
 
     fun getAllAirports() {
         viewModelScope.launch {
-            searchState = searchState.copy(allAirports = airportRepository.getAllAirports() )
+            val airports = airportRepository.getAllAirports()
+            searchState = searchState.copy(allAirports = airports )
+            defaultAllAirports = airports
         }
     }
 

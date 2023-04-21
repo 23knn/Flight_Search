@@ -8,16 +8,22 @@ import androidx.lifecycle.viewModelScope
 import com.example.flightsearch.data.repository.AirportRepository
 import com.example.flightsearch.data.repository.FavoriteRepository
 import com.example.flightsearch.model.Airport
+import com.example.flightsearch.model.Favorite
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.launch
 
 
 
 class GetFlightsViewModel(private val airportRepository: AirportRepository, private val favoriteRepository: FavoriteRepository): ViewModel() {
     var searchState by mutableStateOf(SearchState())
+    var favorites: Flow<List<Favorite>> = emptyFlow()
     var defaultAllAirports: List<Airport> = emptyList()
 
     init {
         getAllAirports()
+        getAllFavorites()
     }
 
     fun getAllAirports() {
@@ -46,6 +52,12 @@ class GetFlightsViewModel(private val airportRepository: AirportRepository, priv
             originAirport = airport,
             showType = showTypes.FLIGHTS
         )
+    }
+
+    fun getAllFavorites() {
+        viewModelScope.launch {
+            favorites = favoriteRepository.getAllFavorites()
+        }
     }
 
 

@@ -11,7 +11,13 @@ class ViewModelProvider {
             initializer {
                 val app = (this[APPLICATION_KEY] as FlightSearchApp)
                 val container = app.container
-                GetFlightsViewModel(container.offlineAirportRepository, container.offlineFavoriteRepository)
+                GetFlightsViewModel(container.offlineAirportRepository)
+            }
+
+            initializer {
+                val app = (this[APPLICATION_KEY] as FlightSearchApp)
+                val container = app.container
+                FavoritesViewModel(container.offlineFavoriteRepository)
             }
         }
     }

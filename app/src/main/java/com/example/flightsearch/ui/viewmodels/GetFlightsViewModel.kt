@@ -27,6 +27,14 @@ class GetFlightsViewModel(private val airportRepository: AirportRepository): Vie
         }
     }
 
+    fun findAirportByIATA(iata: String): Airport? {
+        var out: Airport? = null
+        viewModelScope.launch {
+            out = airportRepository.findByNameOrIATA("%$iata%").first()
+
+        }
+        return out
+    }
     fun updateSearchSuggestions(searchString: String) {
         viewModelScope.launch {
             _searchState.value = if(searchString == "") {

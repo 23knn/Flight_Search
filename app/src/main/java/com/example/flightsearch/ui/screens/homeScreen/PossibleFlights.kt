@@ -41,7 +41,7 @@ fun PossibleFlights(defaultAllAirports: List<Airport>, origin: Airport, modifier
 }
 
 @Composable
-fun To_Fro(origin: Airport, destination: Airport, modifier: Modifier) {
+fun To_Fro(origin: Airport, destination: Airport, modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
         Text(text = "Depart")
         AirportInfo(airport = origin)
